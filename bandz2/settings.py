@@ -101,10 +101,22 @@ WSGI_APPLICATION = 'bandz2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# SQLite
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'bandz2',
+        'USER': os.environ.get('DB_USR'),
+        'PASSWORD': os.environ.get('DB_PWD'),
+        'HOST': 'localhost',
+        'PORT': 5432
     }
 }
 
