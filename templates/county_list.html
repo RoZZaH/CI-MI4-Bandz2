@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Counties List{% endblock title %}
+{% block content %}
+<h2>Counties List</h2>
+{% regroup counties|dictsort:"name"|dictsort:"province" by province as province_list %}
+<ul class="list-inside list-disc">
+{% for province in province_list %}
+<li>{{ province.grouper }} /
+    <ol class="ml-4 list-inside list-decimal">
+    {% for county in province.list %}
+    <li><a href="#TODO">{{ county.name }}</a>
+        <ol class="ml-4 list-inside list-decimal">
+        {% for town in county.towns %}
+        <li>{{ town }}</li>
+        {% endfor %}
+        </ol>
+        </li>
+    {% endfor %}
+    </ol>
+</li>
+{% endfor %}
+</ul>
+{% endblock content %}

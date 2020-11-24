@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from public.views import HomepageView
+from public.views import HomepageView, CountyListView, BandListView, BandDetailView, BandCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +24,10 @@ urlpatterns = [
     #     TemplateView.as_view(template_name="public_index.html"),
     #     name="home",
     # ),
+    # path('', include(('home.urls', 'home'), namespace='home'))
     path('', HomepageView.as_view(), name='home'),
+    path('counties/', CountyListView.as_view(template_name="county_list.html"), name='counties'),
+    path('bands/', BandListView.as_view(template_name="public_list.html"), name='bands'),
+    path('bands/add/', view=BandCreateView.as_view(template_name="band_add.html"), name='band_add'),
+    path('bands/<slug:slug>/', view=BandDetailView.as_view(template_name="band_detail.html"), name='band_detail')
 ]

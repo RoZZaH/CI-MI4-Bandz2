@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Band: {{ band.name }}{% endblock title %}
+{% block content %}
+<h2>{{ band.name }}</h2>
+
+<ul class="list-inside list-disc">
+
+<li>{{ band.name }}
+    <ol class="ml-4 list-inside list-decimal">
+        <li>{{ band.catalogue_name }}</li>
+        <li>{{ band.homecounty }}
+    </ol>
+</li>
+</ul>
+<p><a href="{% url 'bands' %}">Back to List</a></p>
+{% endblock content %}

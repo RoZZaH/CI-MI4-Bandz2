@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites', #added, allows proper callbacks for connecting via socialaccount - try it in own project
+    'django_extensions', #django shell_plus
     'allauth', #added
     'allauth.account', #added
     'allauth.socialaccount', #added
